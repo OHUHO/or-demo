@@ -1,0 +1,38 @@
+server:
+    port: 8417
+
+spring:
+    application:
+      name: Spring Boot 3 + Spring Security + JWT + OpenAPI3
+    datasource:
+        url: jdbc:mysql://localhost:3306/w_admin
+        username: root
+        password: jc951753
+
+mybatis-plus:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    global-config:
+        db-config:
+            table-prefix: t_
+            id-type: auto
+    type-aliases-package: com.record.security.entity
+    mapper-locations: classpath:mapper/*.xml
+
+
+application:
+    security:
+        jwt:
+            secret-key: VUhJT0pJT0hVWUlHRFVGVFdPSVJISVVHWUZHVkRVR0RISVVIREJZI1VJSEZTVUdZR0ZTVVk=
+            expiration: 86400000 # 1天
+            refresh-token:
+                expiration: 604800000 # 7 天
+
+springdoc:
+    swagger-ui:
+        path: /docs.html
+        tags-sorter: alpha
+        operations-sorter: alpha
+    api-docs:
+        path: /v3/api-docs
+
